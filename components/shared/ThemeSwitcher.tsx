@@ -17,12 +17,22 @@ const ThemeSwitcher = () => {
   return (
     <Tabs defaultValue={theme}>
       <TabsList className="border">
-        <TabsTrigger value="light" onClick={() => setTheme("light")}>
-          <SunIcon className="h-6 w-6" />
-        </TabsTrigger>
-        <TabsTrigger value="dark" onClick={() => setTheme("dark")}>
-          <MoonIcon className="h-6 w-6 rotate-90 transision-all dark:rotate-0" />
-        </TabsTrigger>
+        {theme !== "light" && (
+          <>
+            <TabsTrigger value="light" onClick={() => setTheme("light")}>
+              <SunIcon className="h-6 w-6" />
+            </TabsTrigger>
+          </>
+        )}
+        {theme === "light" && (
+          <>
+            {" "}
+            <TabsTrigger value="dark" onClick={() => setTheme("dark")}>
+              <MoonIcon className="h-6 w-6 rotate-90 transision-all dark:rotate-0" />
+            </TabsTrigger>
+          </>
+        )}
+
         <TabsTrigger value="system" onClick={() => setTheme("system")}>
           <DesktopIcon className="h-6 w-6" />
         </TabsTrigger>
